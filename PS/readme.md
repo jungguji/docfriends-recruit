@@ -9,8 +9,7 @@
 * ***결과값이 나올 필요가 없습니다.***
 * 코드 작업을 commit 단위로 나누어주세요(필수)
 
-# Description
-String q = "q7b54553c4d891kk6e78f9g12h34i5j12sdkdkk456doc8445l6f7n89m99o123p454dh6qfj567r768s84890t67u456v345w234x5483fk53jdj9zabc4544";
+# Question
 
 숫자와 문자가 섞인 q라는 문자열이 있는데
 
@@ -20,11 +19,10 @@ String q = "q7b54553c4d891kk6e78f9g12h34i5j12sdkdkk456doc8445l6f7n89m99o123p454d
 
 a + b의 합을 구하여라.
 
-# Example
-
-- **Question**
+# Input
 
   String q = "a1b23c4d56e78f9g12h34i5j12k45l67n89m99o123p456q567r768s890t67u456v345w234x23y239z";
-- **Answer**
+
+# Output
 
   31
