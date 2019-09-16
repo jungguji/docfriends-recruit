@@ -23,6 +23,8 @@ a + b의 합을 구하여라.
 # Example
 
 - **Question**
-String q = "a1b23c4d56e78f9g12h34i5j12k45l67n89m99o123p456q567r768s890t67u456v345w234x23y239z";
+
+  String q = "a1b23c4d56e78f9g12h34i5j12k45l67n89m99o123p456q567r768s890t67u456v345w234x23y239z";
 - **Answer**
-31
+
+  31
