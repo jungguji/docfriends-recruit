@@ -50,7 +50,7 @@ class SolutionTest {
 
     @Test
     void getIndexOfMaxAndMin() {
-        assertArrayEquals(new int[] {13, 18}, test.getIndexOfMaxAndMin(test.getNumbers("ab23c4d56e78f9g12h34i5j12k45l67n89m99o1k123p456q567r768s890t67u456v345w234x23y239z".toCharArray())));
+        assertArrayEquals(new int[] {18, 13}, test.getIndexOfMaxAndMin(test.getNumbers("ab23c4d56e78f9g12h34i5j12k45l67n89m99o1k123p456q567r768s890t67u456v345w234x23y239z".toCharArray())));
         assertArrayEquals(new int[] {0, 0}, test.getIndexOfMaxAndMin(test.getNumbers("1".toCharArray())));
         assertArrayEquals(new int[] {0, 1}, test.getIndexOfMaxAndMin(test.getNumbers("100a2".toCharArray())));
         assertArrayEquals(new int[] {10, 0}, test.getIndexOfMaxAndMin(test.getNumbers("a0a1a2a3a4a5a6a7a8a9a10".toCharArray())));
