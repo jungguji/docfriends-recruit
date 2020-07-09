@@ -23,6 +23,9 @@ class SolutionTest {
         assertEquals(0, test.solution("1"));
         assertEquals(1, test.solution("100a2"));
         assertEquals(10, test.solution("a0a1a2a3a4a5a6a7a8a9a10"));
+        assertEquals(0, test.solution("abcdefghjik123asdas"));
+        assertEquals(0, test.solution("abcdfdfqefsf"));
+        assertEquals(9, test.solution("7d8fd54gasf7897asdqwr12zcvfg8ydrtd1fd7h98rt2fg87ftu"));
     }
 
     @Test
