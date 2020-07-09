@@ -33,6 +33,10 @@ public class Solution {
             }
         }
 
+        if (number.length() != 0) {
+            numbers.add(Integer.parseInt(number.toString()));
+        }
+
         return numbers;
     }
 }
