@@ -39,4 +39,16 @@ public class Solution {
 
         return numbers;
     }
+
+    public int[] getIndexOfMaxAndMin(List<Integer> numbers) {
+        int min = Integer.MIN_VALUE;
+        int max = Integer.MAX_VALUE;
+
+        for (int number : numbers) {
+            min = min > number ? number : min;
+            max = max < number ? number : max;
+        }
+
+        return new int[] {max, min};
+    }
 }
