@@ -11,8 +11,11 @@ public class Solution {
         char[] charArray = q.toCharArray();
 
         List<Integer> numbers = getNumbers(charArray);
+        int[] maxAndMin = getIndexOfMaxAndMin(numbers);
 
-        return 0;
+        int answer = maxAndMin[0] + maxAndMin[1];
+
+        return answer;
     }
 
     public List<Integer> getNumbers(char[] charArray) {
