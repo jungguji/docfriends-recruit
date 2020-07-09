@@ -41,14 +41,27 @@ public class Solution {
     }
 
     public int[] getIndexOfMaxAndMin(List<Integer> numbers) {
-        int min = Integer.MIN_VALUE;
-        int max = Integer.MAX_VALUE;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
 
+        int minIndex = 0;
+        int maxIndex = 0;
+
+        int index = 0;
         for (int number : numbers) {
-            min = min > number ? number : min;
-            max = max < number ? number : max;
+            if (min > number) {
+                min = number;
+                minIndex = index;
+            }
+
+            if (max < number) {
+                max = number;
+                maxIndex = index;
+            }
+
+            ++index;
         }
 
-        return new int[] {max, min};
+        return new int[] {maxIndex, minIndex};
     }
 }
