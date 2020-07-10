@@ -4,7 +4,7 @@ CREATE TABLE `answer` (
 	, `question_id` INT(11) NOT NULL
     , `content` TEXT NOT NULL
 	, `tag` VARCHAR(500) NULL
-	, `create_date` DATE NOT NULL
+	, `create_date` DATETIME NOT NULL
 	, `doctor_id` INT(11) NOT NULL
     , PRIMARY KEY (`id`)
 	, INDEX `fk_answer_question` (`question_id`)

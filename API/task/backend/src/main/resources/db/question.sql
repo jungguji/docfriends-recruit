@@ -4,7 +4,7 @@ CREATE TABLE `question` (
     , `title` VARCHAR(100) NOT NULL
     , `content` TEXT NOT NULL
 	, `tag` VARCHAR(500) NULL
-	, `create_date` DATE NOT NULL
+	, `create_date` DATETIME NOT NULL
 	, `user_id` INT(11) NOT NULL
     , PRIMARY KEY (`id`)
 	, INDEX `fk_question_general_user` (`user_id`)
