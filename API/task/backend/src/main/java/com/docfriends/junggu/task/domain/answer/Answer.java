@@ -21,17 +21,15 @@ public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer questionId;
     private String content;
     private String tag;
     private LocalDateTime createDate;
-    private Integer doctorId;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "question_id")
     private Question question;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 }
