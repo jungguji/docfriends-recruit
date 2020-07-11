@@ -1,12 +1,10 @@
 package com.docfriends.junggu.task.domain.answer;
 
+import com.docfriends.junggu.task.domain.doctor.Doctor;
 import lombok.Builder;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -22,4 +20,8 @@ public class Answer {
     private String tag;
     private LocalDateTime createDate;
     private Integer doctorId;
+
+    @ManyToOne
+    @JoinColumn(name="id")
+    private Doctor doctor;
 }
