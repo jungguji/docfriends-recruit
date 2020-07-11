@@ -27,6 +27,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
             + "JOIN d.hospital h            "
             + "WHERE q.id = a.question      "
             + "    AND a.doctor = d.id      "
-            + "    AND d.hospital = h.id    ")
+            + "    AND d.hospital = h.id    "
+            + "ORDER BY q.id                ")
     List<Object[]> findMainList();
 }
