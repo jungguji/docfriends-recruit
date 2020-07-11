@@ -5,17 +5,13 @@ import com.docfriends.junggu.task.domain.question.Question;
 import lombok.Builder;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
 @Builder
 @Entity
+@Table(name = "answer")
 public class Answer {
 
     @Id
