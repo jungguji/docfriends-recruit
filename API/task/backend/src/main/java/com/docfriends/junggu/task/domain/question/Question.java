@@ -32,7 +32,7 @@ public class Question {
     private final LocalDateTime createDate;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "generalUser_id")
     private GeneralUser generalUser;
 
     @OneToMany(mappedBy = "question")
