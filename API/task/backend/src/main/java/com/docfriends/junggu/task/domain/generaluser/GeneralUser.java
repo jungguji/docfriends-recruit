@@ -1,5 +1,6 @@
 package com.docfriends.junggu.task.domain.generaluser;
 
+import com.docfriends.junggu.task.domain.question.Question;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -21,4 +25,7 @@ public class GeneralUser {
     private String userId;
     private String password;
     private String name;
+
+    @OneToMany(mappedBy = "question")
+    private List<Question> questions = new ArrayList<>();
 }
