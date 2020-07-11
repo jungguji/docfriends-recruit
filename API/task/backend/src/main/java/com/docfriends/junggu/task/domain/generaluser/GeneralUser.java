@@ -26,6 +26,6 @@ public class GeneralUser {
     private String password;
     private String name;
 
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "generalUser")
     private List<Question> questions = new ArrayList<>();
 }

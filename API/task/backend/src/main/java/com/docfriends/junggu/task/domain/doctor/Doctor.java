@@ -25,6 +25,6 @@ public class Doctor {
     @JoinColumn(name="id")
     private Hospital hospital;
 
-    @OneToMany(mappedBy = "answer")
+    @OneToMany(mappedBy = "doctor")
     private List<Answer> answers = new ArrayList<>();
 }

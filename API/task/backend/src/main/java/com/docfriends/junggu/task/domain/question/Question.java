@@ -35,6 +35,6 @@ public class Question {
     @JoinColumn(name = "id")
     private GeneralUser generalUser;
 
-    @OneToMany(mappedBy = "answer")
+    @OneToMany(mappedBy = "question")
     private List<Answer> answers = new ArrayList<>();
 }
