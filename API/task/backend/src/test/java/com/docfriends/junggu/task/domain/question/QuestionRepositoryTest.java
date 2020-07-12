@@ -1,5 +1,6 @@
 package com.docfriends.junggu.task.domain.question;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,24 +25,33 @@ class QuestionRepositoryTest {
     @Autowired
     QuestionRepository questionRepository;
 
+    LocalDateTime time;
+    LocalDateTime time1;
+    LocalDateTime answerTime;
+
+    @BeforeEach
+    public void setUp() {
+        this.time = LocalDateTime.of(2020, 07,11,19,51,04);
+        this.time1 = LocalDateTime.of(2020, 07,11,19,51,05);
+        this.answerTime = LocalDateTime.of(2020, 07,11,19,52,28);
+    }
+
     @Test
     void findMainList() {
         //given
-        LocalDateTime time = LocalDateTime.of(2020, 07,11,19,51,04);
-        LocalDateTime time1 = LocalDateTime.of(2020, 07,11,19,51,05);
-
         List<Object[]> given = Arrays.asList(
-                new Object[]   {"질문글 제목 01",	"질문내용 01",	"tag 01",	time, 2L}
-                , new Object[] {"질문글 제목 03",	"질문내용 03",	"tag 03",	time, 1L}
-                , new Object[] {"질문글 제목 04",	"질문내용 04",	"tag 04",	time, 1L}
-                , new Object[] {"질문글 제목 05",	"질문내용 05",	"tag 05",	time, 1L}
-                , new Object[] {"질문글 제목 06",	"질문내용 06",	"tag 06",	time1, 1L}
-                , new Object[] {"질문글 제목 07",	"질문내용 07",	"tag 07",	time1, 1L}
-                , new Object[] {"질문글 제목 08",	"질문내용 08",	"tag 08",	time1, 1L}
-                , new Object[] {"질문글 제목 09",	"질문내용 09",	"tag 09",	time1, 1L}
+                new Object[]   {1, "질문글 제목 01",	"질문내용 01",	"tag 01",	time, 2L}
+                , new Object[] {3, "질문글 제목 03",	"질문내용 03",	"tag 03",	time, 1L}
+                , new Object[] {4, "질문글 제목 04",	"질문내용 04",	"tag 04",	time, 1L}
+                , new Object[] {5, "질문글 제목 05",	"질문내용 05",	"tag 05",	time, 1L}
+                , new Object[] {6, "질문글 제목 06",	"질문내용 06",	"tag 06",	time1, 1L}
+                , new Object[] {7, "질문글 제목 07",	"질문내용 07",	"tag 07",	time1, 1L}
+                , new Object[] {8, "질문글 제목 08",	"질문내용 08",	"tag 08",	time1, 1L}
+                , new Object[] {9, "질문글 제목 09",	"질문내용 09",	"tag 09",	time1, 1L}
         );
 
         List<String> columns = new ArrayList<>();
+        columns.add("questionId");
         columns.add("questionTitle");
         columns.add("questionContent");
         columns.add("questionTag");
@@ -84,12 +94,11 @@ class QuestionRepositoryTest {
     @Test
     void findConsultDetail() {
         //given
-        LocalDateTime time = LocalDateTime.of(2020, 07,11,19,51,04);
         LocalDateTime time1 = LocalDateTime.of(2020, 07,11,19,52,28);
 
         List<Object[]> given = Arrays.asList(
-                new Object[] {"질문글 제목 01",	"질문내용 01",	"tag 01",	    time,	"답글답글답글 1",	time1,	"의사 1",	"병원 1",	"서울시 1"}
-                , new Object[] {"질문글 제목 01",	"질문내용 01",	"tag 01",	time,	"답글답글답글 2",	time1,	"의사 1",	"병원 1",	"서울시 1"}
+                new Object[] {"질문글 제목 01",	"질문내용 01",	"tag 01",	    time,	"답글답글답글 1",	answerTime,	"의사 1",	"병원 1",	"서울시 1"}
+                , new Object[] {"질문글 제목 01",	"질문내용 01",	"tag 01",	time,	"답글답글답글 2",	answerTime,	"의사 2",	"병원 1",	"서울시 1"}
         );
 
         List<String> columns = new ArrayList<>();
