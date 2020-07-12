@@ -1,14 +1,14 @@
 package com.docfriends.junggu.task.web.dto;
 
 import com.docfriends.junggu.task.web.dto.AnswerDTO.ConsultDetail;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.util.Assert;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class QuestionDTO {
 
     @Getter
@@ -23,13 +23,24 @@ public class QuestionDTO {
     }
 
     @Getter
-    @Builder
-    @AllArgsConstructor
+    @NoArgsConstructor
     public static class ConsultDetail {
-        private final String title;
-        private final String content;
+        private String title;
+        private String content;
         private String tag;
-        private final LocalDate createDate;
-        private final List<AnswerDTO.ConsultDetail> answers;
+        private LocalDate createDate;
+
+        private List<AnswerDTO.ConsultDetail> answers = new ArrayList<>();
+
+        @Builder
+        public ConsultDetail(String title, String content, String tag, LocalDate createDate, List<AnswerDTO.ConsultDetail> answers) {
+            Assert.notNull(answers, "answers must not be null");
+            Assert.notEmpty(answers, "answers must not be empty");
+            this.title = title;
+            this.content = content;
+            this.tag = tag;
+            this.createDate = createDate;
+            this.answers = answers;
+        }
     }
 }
