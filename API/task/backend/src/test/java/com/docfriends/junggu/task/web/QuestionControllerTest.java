@@ -1,6 +1,6 @@
 package com.docfriends.junggu.task.web;
 
-import com.docfriends.junggu.task.domain.question.QuestionDTO.MainView;
+import com.docfriends.junggu.task.web.dto.QuestionDTO.MainView;
 import com.docfriends.junggu.task.service.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

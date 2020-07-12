@@ -1,16 +1,16 @@
-package com.docfriends.junggu.task.domain.question;
+package com.docfriends.junggu.task.web.dto;
 
-import com.docfriends.junggu.task.domain.question.QuestionDTO.MainView;
+import com.docfriends.junggu.task.web.dto.QuestionDTO.MainView;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class QuestionDTOTest {
 
     @Test
-    void builder() {
+    void mainView() {
         //given
         String title = "테스트입니다.";
         String content = "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용";
