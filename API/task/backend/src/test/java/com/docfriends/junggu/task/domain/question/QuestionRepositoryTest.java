@@ -80,4 +80,42 @@ class QuestionRepositoryTest {
         }
         return mapList;
     }
+
+    @Test
+    void findConsultDetail() {
+        //given
+        LocalDateTime time = LocalDateTime.of(2020, 07,11,19,51,04);
+        LocalDateTime time1 = LocalDateTime.of(2020, 07,11,19,52,28);
+
+        List<Object[]> given = Arrays.asList(
+                new Object[] {"질문글 제목 01",	"질문내용 01",	"tag 01",	    time,	"답글답글답글 1",	time1,	"의사 1",	"병원 1",	"서울시 1"}
+                , new Object[] {"질문글 제목 01",	"질문내용 01",	"tag 01",	time,	"답글답글답글 2",	time1,	"의사 1",	"병원 1",	"서울시 1"}
+        );
+
+        List<String> columns = new ArrayList<>();
+        columns.add("questionTitle");
+        columns.add("questionContent");
+        columns.add("questionTag");
+        columns.add("answerContent");
+        columns.add("answerCreateDate");
+        columns.add("doctorName");
+        columns.add("hospitalName");
+        columns.add("hospitalAddress");
+
+        List<Map<String, Object>> givenList = convertMapList(given, columns);
+
+        //when
+        List<Object[]> list = questionRepository.findConsultDetail(1);
+        List<Map<String, Object>> convert = convertMapList(list, columns);
+
+        //than
+        for (int i = 0; i < convert.size(); i++) {
+            Map<String, Object> target = convert.get(i);
+            Map<String, Object> givenMap = givenList.get(i);
+
+            for (String key : columns) {
+                assertEquals(givenMap.get(key), target.get(key));
+            }
+        }
+    }
 }
