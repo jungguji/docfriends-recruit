@@ -27,7 +27,7 @@ public class QuestionController {
         return questionService.getMainList();
     }
 
-    @GetMapping(value = "/detail/{id}")
+    @GetMapping(value = "/detail/{id}", produces = "application/json")
     @ResponseBody
     public QuestionDTO.ConsultDetail findConsultDetail(@PathVariable("id") int id) {
         return questionService.findConsultDetail(id);
