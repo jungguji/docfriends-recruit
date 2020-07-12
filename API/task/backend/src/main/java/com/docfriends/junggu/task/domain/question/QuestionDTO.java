@@ -2,7 +2,7 @@ package com.docfriends.junggu.task.domain.question;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 
 public class QuestionDTO {
@@ -10,11 +10,13 @@ public class QuestionDTO {
     @Getter
     @Setter
     @AllArgsConstructor
-    public static class MainList {
+    public static class MainView {
         private final String title;
         private final String content;
         private String tag;
-        private final LocalDateTime createDate;
+        private final LocalDate createDate;
         private final Long answerCount;
     }
+
+
 }
