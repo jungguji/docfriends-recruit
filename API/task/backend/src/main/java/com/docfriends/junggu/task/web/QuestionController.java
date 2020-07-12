@@ -16,9 +16,9 @@ public class QuestionController {
 
     private final QuestionService questionService;
 
-    @GetMapping("/main")
+    @GetMapping(value = "/main", produces = "application/json")
     @ResponseBody
     public List<QuestionDTO.MainView> findQuestionMainList() {
-        return new ArrayList<>();
+        return questionService.getMainList();
     }
 }
