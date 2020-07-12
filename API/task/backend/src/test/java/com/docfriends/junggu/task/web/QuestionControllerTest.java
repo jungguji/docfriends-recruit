@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
@@ -15,12 +16,14 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest
+@WithMockUser
 class QuestionControllerTest {
 
     @Autowired
@@ -58,6 +61,7 @@ class QuestionControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
 
-        result.getResponse().getContentAsString();
+        String expected = "[{\"title\":\"질문글 제목 01\",\"content\":\"질문내용 01\",\"tag\":\"tag 01\",\"createDate\":\"2020-07-11\",\"answerCount\":2},{\"title\":\"질문글 제목 03\",\"content\":\"질문내용 03\",\"tag\":\"tag 03\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"title\":\"질문글 제목 04\",\"content\":\"질문내용 04\",\"tag\":\"tag 04\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"title\":\"질문글 제목 05\",\"content\":\"질문내용 05\",\"tag\":\"tag 05\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"title\":\"질문글 제목 06\",\"content\":\"질문내용 06\",\"tag\":\"tag 06\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"title\":\"질문글 제목 07\",\"content\":\"질문내용 07\",\"tag\":\"tag 07\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"title\":\"질문글 제목 08\",\"content\":\"질문내용 08\",\"tag\":\"tag 08\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"title\":\"질문글 제목 09\",\"content\":\"질문내용 09\",\"tag\":\"tag 09\",\"createDate\":\"2020-07-11\",\"answerCount\":1}]";
+        assertEquals(expected, result.getResponse().getContentAsString());
     }
 }
