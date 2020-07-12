@@ -38,12 +38,13 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
             + "    , h.address              "
             + "FROM                         "
             + "    Question q               "
-            + "WHERE q.id = :questionId     "
             + "JOIN q.answers a		        "
             + "JOIN a.doctor d              "
             + "JOIN d.hospital h            "
-            + "WHERE q.id = a.question      "
+            + "WHERE                        "
+            + "    q.id = :questionId       "
+            + "    AND q.id = a.question    "
             + "    AND a.doctor = d.id      "
             + "    AND d.hospital = h.id    ")
-    List<Object[]> findConsultDetail(@Param("questionId") String questionId);
+    List<Object[]> findConsultDetail(@Param("questionId") Integer questionId);
 }
