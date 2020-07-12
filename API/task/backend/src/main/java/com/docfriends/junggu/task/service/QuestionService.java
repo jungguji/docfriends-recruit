@@ -1,6 +1,8 @@
 package com.docfriends.junggu.task.service;
 
+import com.docfriends.junggu.task.web.dto.AnswerDTO;
 import com.docfriends.junggu.task.web.dto.QuestionDTO;
+import com.docfriends.junggu.task.web.dto.QuestionDTO.ConsultDetail;
 import com.docfriends.junggu.task.web.dto.QuestionDTO.MainView;
 import com.docfriends.junggu.task.domain.question.QuestionRepository;
 import lombok.RequiredArgsConstructor;
@@ -36,8 +38,44 @@ public class QuestionService {
     }
 
     public QuestionDTO.ConsultDetail findConsultDetail(Integer questionId) {
-        List<Object[]> consultDetailList = questionRepository.findConsultDetail(questionId);
+        List<Object[]> objectList = questionRepository.findConsultDetail(questionId);
 
-        return null;
+        List<AnswerDTO.ConsultDetail> answers = getAnswers(objectList);
+
+        Object[] questionArray = objectList.get(0);
+        String title = (String) questionArray[0];
+        String content = (String) questionArray[1];
+        String tag = (String) questionArray[2];
+        LocalDate createDate = ((LocalDate) questionArray[3]);
+
+        return ConsultDetail.builder()
+                .title(title)
+                .content(content)
+                .tag(tag)
+                .createDate(createDate)
+                .answers(answers)
+                .build();
+    }
+
+    private List<AnswerDTO.ConsultDetail> getAnswers(List<Object[]> objectList) {
+        List<AnswerDTO.ConsultDetail> answers = new ArrayList<>();
+
+        for (Object[] objArray : objectList) {
+            String answerContent = (String) objArray[4];
+            LocalDate answerCreateDate = (LocalDate) objArray[5];
+            String doctor = (String) objArray[6];
+            String hospital = (String) objArray[7];
+            String address = (String) objArray[8];
+
+            answers.add(AnswerDTO.ConsultDetail.builder()
+                    .answerContent(answerContent)
+                    .answerCreateDate(answerCreateDate)
+                    .doctorName(doctor)
+                    .hospitalName(hospital)
+                    .hospitalAddress(address)
+                    .build());
+        }
+
+        return answers;
     }
 }
