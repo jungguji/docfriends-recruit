@@ -1,17 +1,15 @@
 package com.docfriends.junggu.task.service;
 
+import com.docfriends.junggu.task.domain.question.QuestionRepository;
 import com.docfriends.junggu.task.web.dto.AnswerDTO;
 import com.docfriends.junggu.task.web.dto.QuestionDTO;
-import com.docfriends.junggu.task.web.dto.QuestionDTO.ConsultDetail;
 import com.docfriends.junggu.task.web.dto.QuestionDTO.MainView;
-import com.docfriends.junggu.task.domain.question.QuestionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -28,9 +26,14 @@ class QuestionServiceTest {
 
     private QuestionService questionService;
 
+    LocalDateTime time;
+    LocalDateTime time1;
+
     @BeforeEach
     public void setUp() {
         this.questionService = new QuestionService(questionRepository);
+        this.time = LocalDateTime.of(2020, 07,11,19,51,04);
+        this.time1 = LocalDateTime.of(2020, 07,11,19,51,05);
     }
 
     @Test
@@ -84,8 +87,6 @@ class QuestionServiceTest {
     @Test
     void findConsultDetail() {
         //given
-        LocalDate time = LocalDate.of(2020, 07,11);
-        LocalDate time1 = LocalDate.of(2020, 07,11);
 
         String title = " 질문글 제목 01";
         String content = "질문내용 01";
@@ -107,7 +108,7 @@ class QuestionServiceTest {
         AnswerDTO.ConsultDetail answer1 = AnswerDTO.ConsultDetail
                 .builder()
                 .answerContent(answerContent1)
-                .answerCreateDate(time1)
+                .answerCreateDate(time1.toLocalDate())
                 .doctorName(doctor1)
                 .hospitalName(hospital)
                 .hospitalAddress(address)
@@ -116,7 +117,7 @@ class QuestionServiceTest {
         AnswerDTO.ConsultDetail answer2 = AnswerDTO.ConsultDetail
                 .builder()
                 .answerContent(answerContent2)
-                .answerCreateDate(time1)
+                .answerCreateDate(time1.toLocalDate())
                 .doctorName(doctor2)
                 .hospitalName(hospital)
                 .hospitalAddress(address)
@@ -131,7 +132,7 @@ class QuestionServiceTest {
                 .title(title)
                 .content(content)
                 .tag(tag)
-                .createDate(time)
+                .createDate(time.toLocalDate())
                 .answers(answers)
                 .build();
 
