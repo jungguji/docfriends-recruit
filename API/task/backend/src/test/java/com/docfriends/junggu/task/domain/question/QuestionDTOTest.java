@@ -1,9 +1,9 @@
 package com.docfriends.junggu.task.domain.question;
 
-import com.docfriends.junggu.task.domain.question.QuestionDTO.MainList;
+import com.docfriends.junggu.task.domain.question.QuestionDTO.MainView;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,11 +15,11 @@ class QuestionDTOTest {
         String title = "테스트입니다.";
         String content = "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용";
         String tag = "태그태그, 한방";
-        LocalDateTime createDate = LocalDateTime.now();
+        LocalDate createDate = LocalDate.now();
         Long answerCount = 2L;
 
         //when
-        QuestionDTO.MainList dto = new MainList(title,	content,	tag,	createDate, answerCount);
+        QuestionDTO.MainView dto = new MainView(title,	content,	tag,	createDate, answerCount);
 
         //than
         assertEquals(title, dto.getTitle());
