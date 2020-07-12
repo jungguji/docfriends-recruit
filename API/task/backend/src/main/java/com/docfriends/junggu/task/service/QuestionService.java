@@ -46,7 +46,7 @@ public class QuestionService {
         String title = (String) questionArray[0];
         String content = (String) questionArray[1];
         String tag = (String) questionArray[2];
-        LocalDate createDate = ((LocalDate) questionArray[3]);
+        LocalDate createDate = ((LocalDateTime) questionArray[3]).toLocalDate();
 
         return ConsultDetail.builder()
                 .title(title)
@@ -62,7 +62,7 @@ public class QuestionService {
 
         for (Object[] objArray : objectList) {
             String answerContent = (String) objArray[4];
-            LocalDate answerCreateDate = (LocalDate) objArray[5];
+            LocalDate answerCreateDate = ((LocalDateTime) objArray[5]).toLocalDate();
             String doctor = (String) objArray[6];
             String hospital = (String) objArray[7];
             String address = (String) objArray[8];
