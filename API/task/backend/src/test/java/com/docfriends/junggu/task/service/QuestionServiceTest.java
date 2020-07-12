@@ -1,7 +1,9 @@
 package com.docfriends.junggu.task.service;
 
-import com.docfriends.junggu.task.domain.question.QuestionDTO;
-import com.docfriends.junggu.task.domain.question.QuestionDTO.MainView;
+import com.docfriends.junggu.task.web.dto.AnswerDTO;
+import com.docfriends.junggu.task.web.dto.QuestionDTO;
+import com.docfriends.junggu.task.web.dto.QuestionDTO.ConsultDetail;
+import com.docfriends.junggu.task.web.dto.QuestionDTO.MainView;
 import com.docfriends.junggu.task.domain.question.QuestionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -76,5 +79,83 @@ class QuestionServiceTest {
             assertEquals(expected.getCreateDate(), target.getCreateDate());
             assertEquals(expected.getAnswerCount(), target.getAnswerCount());
         }
+    }
+
+    @Test
+    void findConsultDetail() {
+        //given
+        LocalDate time = LocalDate.of(2020, 07,11);
+        LocalDate time1 = LocalDate.of(2020, 07,11);
+
+        String title = " 질문글 제목 01";
+        String content = "질문내용 01";
+        String tag = "tag 01";
+        String answerContent1 = "답글답글답글 1";
+        String answerContent2 = "답글답글답글 2";
+        String doctor1 = "의사 1";
+        String doctor2 = "의사 2";
+        String hospital = "병원 1";
+        String address = "서울시 1";
+
+        List<Object[]> given = Arrays.asList(
+                new Object[] {title,	content,	tag,	time,	answerContent1,	time1,	doctor1,	hospital,	address}
+                , new Object[] {title,	content,	tag,	time,	answerContent2,	time1,	doctor2,	hospital,	address}
+        );
+
+        given(this.questionRepository.findConsultDetail(1)).willReturn(given);
+
+        AnswerDTO.ConsultDetail answer1 = AnswerDTO.ConsultDetail
+                .builder()
+                .answerContent(answerContent1)
+                .answerCreateDate(time1)
+                .doctorName(doctor1)
+                .hospitalName(hospital)
+                .hospitalAddress(address)
+                .build();
+
+        AnswerDTO.ConsultDetail answer2 = AnswerDTO.ConsultDetail
+                .builder()
+                .answerContent(answerContent2)
+                .answerCreateDate(time1)
+                .doctorName(doctor2)
+                .hospitalName(hospital)
+                .hospitalAddress(address)
+                .build();
+
+        List<AnswerDTO.ConsultDetail> answers = Arrays.asList(
+                answer1, answer2
+        );
+
+        QuestionDTO.ConsultDetail expected = QuestionDTO.ConsultDetail
+                .builder()
+                .title(title)
+                .content(content)
+                .tag(tag)
+                .createDate(time)
+                .answers(answers)
+                .build();
+
+        //when
+        QuestionDTO.ConsultDetail target = this.questionService.findConsultDetail(1);
+
+        //than
+        assertThat(target).isNotNull();
+
+        assertEquals(expected.getTitle(), target.getTitle());
+        assertEquals(expected.getContent(), target.getContent());
+        assertEquals(expected.getTag(), target.getTag());
+        assertEquals(expected.getCreateDate(), target.getCreateDate());
+
+        for (int i = 0; i < target.getAnswers().size(); i++) {
+            AnswerDTO.ConsultDetail targetAnswer = target.getAnswers().get(i);
+            AnswerDTO.ConsultDetail expectedAnswer = expected.getAnswers().get(i);
+
+            assertEquals(expectedAnswer.getAnswerContent(), targetAnswer.getAnswerContent());
+            assertEquals(expectedAnswer.getAnswerCreateDate(), targetAnswer.getAnswerCreateDate());
+            assertEquals(expectedAnswer.getDoctorName(), targetAnswer.getDoctorName());
+            assertEquals(expectedAnswer.getHospitalName(), targetAnswer.getHospitalName());
+            assertEquals(expectedAnswer.getHospitalAddress(), targetAnswer.getHospitalAddress());
+        }
+
     }
 }
