@@ -14,20 +14,12 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
             + "    , q.content              "
             + "    , q.tag                  "
             + "    , q.createDate           "
-            + "    , a.content              "
-            + "    , a.createDate           "
-            + "    , d.name                 "
-            + "    , h.name                 "
-            + "    , h.address              "
-            + "    , h.websiteUrl           "
+            + "    , count(a.id)            "
             + "FROM                         "
             + "    Question q               "
             + "JOIN q.answers a		        "
-            + "JOIN a.doctor d              "
-            + "JOIN d.hospital h            "
             + "WHERE q.id = a.question      "
-            + "    AND a.doctor = d.id      "
-            + "    AND d.hospital = h.id    "
+            + "GROUP BY q.id                "
             + "ORDER BY q.id                ")
     List<Object[]> findMainList();
 }
