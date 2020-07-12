@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -15,6 +14,11 @@ import java.util.List;
 public class QuestionController {
 
     private final QuestionService questionService;
+
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
 
     @GetMapping(value = "/main", produces = "application/json")
     @ResponseBody
