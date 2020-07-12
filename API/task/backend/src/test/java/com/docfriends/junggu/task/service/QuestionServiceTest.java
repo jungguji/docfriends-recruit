@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(SpringExtension.class)
@@ -65,8 +66,15 @@ class QuestionServiceTest {
         //than
         assertThat(targetList).isNotEmpty();
 
-        for (QuestionDTO.MainView dto : givenDTO) {
-            assertThat(targetList).contains(dto);
+        for (int i = 0; i < targetList.size(); i++) {
+            MainView target = targetList.get(i);
+            MainView expected = givenDTO.get(i);
+
+            assertEquals(expected.getTitle(), target.getTitle());
+            assertEquals(expected.getContent(), target.getContent());
+            assertEquals(expected.getTag(), target.getTag());
+            assertEquals(expected.getCreateDate(), target.getCreateDate());
+            assertEquals(expected.getAnswerCount(), target.getAnswerCount());
         }
     }
 }
