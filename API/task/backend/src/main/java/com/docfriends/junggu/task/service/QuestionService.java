@@ -1,7 +1,7 @@
 package com.docfriends.junggu.task.service;
 
-import com.docfriends.junggu.task.domain.question.QuestionDTO;
-import com.docfriends.junggu.task.domain.question.QuestionDTO.MainView;
+import com.docfriends.junggu.task.web.dto.QuestionDTO;
+import com.docfriends.junggu.task.web.dto.QuestionDTO.MainView;
 import com.docfriends.junggu.task.domain.question.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -33,5 +33,11 @@ public class QuestionService {
         }
 
         return convertMainList;
+    }
+
+    public QuestionDTO.ConsultDetail findConsultDetail(Integer questionId) {
+        List<Object[]> consultDetailList = questionRepository.findConsultDetail(questionId);
+
+        return null;
     }
 }
