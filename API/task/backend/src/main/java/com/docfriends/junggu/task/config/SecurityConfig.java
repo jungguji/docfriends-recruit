@@ -2,6 +2,7 @@ package com.docfriends.junggu.task.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -9,6 +10,8 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -25,8 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(filter, CsrfFilter.class);
 
         http.authorizeRequests()
-                .antMatchers("/main").authenticated()
-                .antMatchers("/detail/**").authenticated()
+                .antMatchers("/main").permitAll()
+                .antMatchers("/detail/**").permitAll()
                 .antMatchers("/**").permitAll()
                 .and();
     }
@@ -34,5 +37,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder noOpPasswordEncoder(){
         return NoOpPasswordEncoder.getInstance();
+    }
+
+    @Bean
+    public WebMvcConfigurer webMvcConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/main")
+                        .allowedOrigins("*")
+                        .allowedMethods(HttpMethod.GET.name())
+                        .allowCredentials(false)
+                        .maxAge(3600);
+            }
+        };
     }
 }
