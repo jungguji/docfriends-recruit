@@ -1,12 +1,18 @@
 <template>
-  <div class="list">
+  <div class="layout">
     <h2>{{pageTitle}}</h2>
-    <div class="question" v-for="(question, id) in questionList" :key="id"
+    <div class="content" v-for="(question, id) in questionList" :key="id"
     @click="toDetail(question.id)">
-        <span> {{question.title}} </span> <br />
-        <span> {{question.tag}} </span> <br />
+    <div class="title">
+        <h2> {{question.title}} </h2>
+        <span class="gray-font"> {{question.tag}} </span> <br />
+    </div>
+     <div class="consult-content">
         <span> {{question.content}} </span> <br />
-        <span> 답변 {{question.answerCount}} </span> <span> {{question.createDate}} </span>
+      </div>
+      <div class="content-floor">
+        <span style="color: green"> 답변 {{question.answerCount}} </span> <span class="gray-font" style="float: right; padding-right: 1rem;"> {{question.createDate}} </span>
+      </div>
     </div>
   </div>
 </template>
@@ -43,14 +49,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.list {
-  background-color:wheat;
-}
-.question {
-  background-color: white;
-  width: 35%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1rem;
-}
 </style>
