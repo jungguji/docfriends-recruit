@@ -1,19 +1,12 @@
 <template>
   <div class="list">
     <h2>{{pageTitle}}</h2>
-    <table class="question">
-      <tr v-for="(question, questionIdx) in questionList" :key="questionIdx">
-        <td class="title">
-            <span> 
-                {{question.title}}
-            </span>
-            <br>
-        </td>
-        <td>
-          {{question.content}}
-        </td>
-      </tr>
-    </table>
+    <div class="question" v-for="(question, id) in questionList" :key="id">
+        <span> {{question.title}} </span> <br />
+        <span> {{question.tag}} </span> <br />
+        <span> {{question.content}} </span> <br />
+        <span> 답변 {{question.answerCount}} </span> <span> {{question.createDate}} </span>
+    </div>
   </div>
 </template>
 
@@ -37,3 +30,17 @@ export default {
   }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.list {
+  background-color:wheat;
+}
+.question {
+  background-color: white;
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+</style>
