@@ -1,7 +1,7 @@
 package com.docfriends.junggu.task.domain.question;
 
 import com.docfriends.junggu.task.domain.answer.Answer;
-import com.docfriends.junggu.task.domain.generaluser.GeneralUser;
+import com.docfriends.junggu.task.domain.user.general.GeneralUser;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
