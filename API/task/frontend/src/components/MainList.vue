@@ -1,7 +1,8 @@
 <template>
   <div class="list">
     <h2>{{pageTitle}}</h2>
-    <div class="question" v-for="(question, id) in questionList" :key="id">
+    <div class="question" v-for="(question, id) in questionList" :key="id"
+    @click="toDetail(question.id)">
         <span> {{question.title}} </span> <br />
         <span> {{question.tag}} </span> <br />
         <span> {{question.content}} </span> <br />
@@ -11,21 +12,30 @@
 </template>
 
 <script>
+import api from "./backend-api";
+
 export default {
   name: 'MainList',
   data: function() {
     return {
       pageTitle: 'Doctalk',
-      questionList: []
+      questionList: [],
+      errors: []
+    }
+  },
+  methods: {
+    toDetail(id) {
+      this.$router.push(`detail/${id}`)
     }
   },
   mounted () {
-    let _this = this
-    _this.$axios.get('http://127.0.0.1:9000/main')
+    api.getQuestionList()
     .then((response) => {
-      response.data.map((item) => {
-        _this.questionList.push(item)
-      })
+      this.questionList = response.data;
+      console.log(response.data)
+    })
+    .catch(e => {
+      this.errors.push(e)
     })
   }
 }
