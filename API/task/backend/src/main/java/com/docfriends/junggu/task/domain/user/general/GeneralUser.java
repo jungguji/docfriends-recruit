@@ -1,22 +1,19 @@
-package com.docfriends.junggu.task.domain.generaluser;
+package com.docfriends.junggu.task.domain.user.general;
 
 import com.docfriends.junggu.task.domain.question.Question;
+import com.docfriends.junggu.task.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @NoArgsConstructor
 @Entity
-public class GeneralUser {
+public class GeneralUser implements User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
