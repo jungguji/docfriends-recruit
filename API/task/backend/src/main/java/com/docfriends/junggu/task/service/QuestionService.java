@@ -25,13 +25,14 @@ public class QuestionService {
         List<QuestionDTO.MainView> convertMainList = new ArrayList<>();
 
         for (Object[] objArray : mainList) {
-            String title = (String) objArray[0];
-            String content = (String) objArray[1];
-            String tag = (String) objArray[2];
-            LocalDate createDate = ((LocalDateTime) objArray[3]).toLocalDate();
-            Long answerCount = (Long) objArray[4];
+            Integer id = (Integer) objArray[0];
+            String title = (String) objArray[1];
+            String content = (String) objArray[2];
+            String tag = (String) objArray[3];
+            LocalDate createDate = ((LocalDateTime) objArray[4]).toLocalDate();
+            Long answerCount = (Long) objArray[5];
 
-            convertMainList.add(new MainView(title, content, tag, createDate, answerCount));
+            convertMainList.add(new MainView(id, title, content, tag, createDate, answerCount));
         }
 
         return convertMainList;

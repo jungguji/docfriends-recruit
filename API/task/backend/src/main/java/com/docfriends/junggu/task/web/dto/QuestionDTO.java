@@ -15,6 +15,7 @@ public class QuestionDTO {
     @Setter
     @AllArgsConstructor
     public static class MainView {
+        private final Integer id;
         private final String title;
         private final String content;
         private String tag;

@@ -43,27 +43,27 @@ class QuestionServiceTest {
         LocalDateTime time1 = LocalDateTime.of(2020, 07,11,19,51,05);
 
         List<Object[]> given = Arrays.asList(
-                new Object[]   {"질문글 제목 01",	"질문내용 01",	"tag 01",	time, 2L}
-                , new Object[] {"질문글 제목 03",	"질문내용 03",	"tag 03",	time, 1L}
-                , new Object[] {"질문글 제목 04",	"질문내용 04",	"tag 04",	time, 1L}
-                , new Object[] {"질문글 제목 05",	"질문내용 05",	"tag 05",	time, 1L}
-                , new Object[] {"질문글 제목 06",	"질문내용 06",	"tag 06",	time1, 1L}
-                , new Object[] {"질문글 제목 07",	"질문내용 07",	"tag 07",	time1, 1L}
-                , new Object[] {"질문글 제목 08",	"질문내용 08",	"tag 08",	time1, 1L}
-                , new Object[] {"질문글 제목 09",	"질문내용 09",	"tag 09",	time1, 1L}
+                new Object[]   {1, "질문글 제목 01",	"질문내용 01",	"tag 01",	time, 2L}
+                , new Object[] {3, "질문글 제목 03",	"질문내용 03",	"tag 03",	time, 1L}
+                , new Object[] {4, "질문글 제목 04",	"질문내용 04",	"tag 04",	time, 1L}
+                , new Object[] {5, "질문글 제목 05",	"질문내용 05",	"tag 05",	time, 1L}
+                , new Object[] {6, "질문글 제목 06",	"질문내용 06",	"tag 06",	time1, 1L}
+                , new Object[] {7, "질문글 제목 07",	"질문내용 07",	"tag 07",	time1, 1L}
+                , new Object[] {8, "질문글 제목 08",	"질문내용 08",	"tag 08",	time1, 1L}
+                , new Object[] {9, "질문글 제목 09",	"질문내용 09",	"tag 09",	time1, 1L}
         );
 
         given(this.questionRepository.findMainList()).willReturn(given);
 
         List<QuestionDTO.MainView> givenDTO = Arrays.asList(
-                new MainView("질문글 제목 01",	"질문내용 01",	"tag 01",	time.toLocalDate(), 2L)
-                , new MainView("질문글 제목 03",	"질문내용 03",	"tag 03",	time.toLocalDate(), 1L)
-                , new MainView("질문글 제목 04",	"질문내용 04",	"tag 04",	time.toLocalDate(), 1L)
-                , new MainView("질문글 제목 05",	"질문내용 05",	"tag 05",	time.toLocalDate(), 1L)
-                , new MainView("질문글 제목 06",	"질문내용 06",	"tag 06",	time1.toLocalDate(), 1L)
-                , new MainView("질문글 제목 07",	"질문내용 07",	"tag 07",	time1.toLocalDate(), 1L)
-                , new MainView("질문글 제목 08",	"질문내용 08",	"tag 08",	time1.toLocalDate(), 1L)
-                , new MainView("질문글 제목 09",	"질문내용 09",	"tag 09",	time1.toLocalDate(), 1L)
+                new MainView(1, "질문글 제목 01",	"질문내용 01",	"tag 01",	time.toLocalDate(), 2L)
+                , new MainView(3, "질문글 제목 03",	"질문내용 03",	"tag 03",	time.toLocalDate(), 1L)
+                , new MainView(4, "질문글 제목 04",	"질문내용 04",	"tag 04",	time.toLocalDate(), 1L)
+                , new MainView(5, "질문글 제목 05",	"질문내용 05",	"tag 05",	time.toLocalDate(), 1L)
+                , new MainView(6, "질문글 제목 06",	"질문내용 06",	"tag 06",	time1.toLocalDate(), 1L)
+                , new MainView(7, "질문글 제목 07",	"질문내용 07",	"tag 07",	time1.toLocalDate(), 1L)
+                , new MainView(8, "질문글 제목 08",	"질문내용 08",	"tag 08",	time1.toLocalDate(), 1L)
+                , new MainView(9, "질문글 제목 09",	"질문내용 09",	"tag 09",	time1.toLocalDate(), 1L)
         );
 
         //when
@@ -76,6 +76,7 @@ class QuestionServiceTest {
             MainView target = targetList.get(i);
             MainView expected = givenDTO.get(i);
 
+            assertEquals(expected.getId(), target.getId());
             assertEquals(expected.getTitle(), target.getTitle());
             assertEquals(expected.getContent(), target.getContent());
             assertEquals(expected.getTag(), target.getTag());

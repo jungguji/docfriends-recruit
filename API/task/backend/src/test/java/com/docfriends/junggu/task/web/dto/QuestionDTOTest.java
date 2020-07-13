@@ -12,6 +12,7 @@ class QuestionDTOTest {
     @Test
     void mainView() {
         //given
+        Integer id = 1;
         String title = "테스트입니다.";
         String content = "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용";
         String tag = "태그태그, 한방";
@@ -19,9 +20,10 @@ class QuestionDTOTest {
         Long answerCount = 2L;
 
         //when
-        QuestionDTO.MainView dto = new MainView(title,	content,	tag,	createDate, answerCount);
+        QuestionDTO.MainView dto = new MainView(id, title,	content,	tag,	createDate, answerCount);
 
         //than
+        assertEquals(id, dto.getId());
         assertEquals(title, dto.getTitle());
         assertEquals(content, dto.getContent());
         assertEquals(tag, dto.getTag());
