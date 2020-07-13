@@ -4,13 +4,14 @@ import com.docfriends.junggu.task.domain.answer.Answer;
 import com.docfriends.junggu.task.domain.hospital.Hospital;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Builder
+@NoArgsConstructor
 @Entity
 public class Doctor {
 
@@ -27,4 +28,13 @@ public class Doctor {
 
     @OneToMany(mappedBy = "doctor")
     private List<Answer> answers = new ArrayList<>();
+
+    @Builder
+    public Doctor(String userId, String password, String name, Hospital hospital, List<Answer> answers) {
+        this.userId = userId;
+        this.password = password;
+        this.name = name;
+        this.hospital = hospital;
+        this.answers = answers;
+    }
 }
