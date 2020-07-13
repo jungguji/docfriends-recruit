@@ -3,6 +3,7 @@ package com.docfriends.junggu.task.domain.hospital;
 import com.docfriends.junggu.task.domain.doctor.Doctor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Builder
+@NoArgsConstructor
 @Entity
 public class Hospital {
 
@@ -26,4 +27,12 @@ public class Hospital {
 
     @OneToMany(mappedBy = "hospital")
     private List<Doctor> doctors = new ArrayList<>();
+
+    @Builder
+    public Hospital(String name, String address, String websiteUrl, List<Doctor> doctors) {
+        this.name = name;
+        this.address = address;
+        this.websiteUrl = websiteUrl;
+        this.doctors = doctors;
+    }
 }
