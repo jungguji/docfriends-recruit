@@ -49,6 +49,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .allowedMethods(HttpMethod.GET.name())
                         .allowCredentials(false)
                         .maxAge(3600);
+                registry.addMapping("/detail/{id}")
+                        .allowedOrigins("*")
+                        .allowedMethods(HttpMethod.GET.name())
+                        .allowCredentials(false)
+                        .maxAge(3600);
             }
         };
     }
