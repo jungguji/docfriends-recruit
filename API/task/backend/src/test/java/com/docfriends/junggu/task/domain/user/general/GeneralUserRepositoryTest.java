@@ -26,11 +26,11 @@ class GeneralUserRepositoryTest {
         String name = "일반유저 1";
 
         //when
-        User given = generalUserRepository.findByUserId(userId);
+        User target = generalUserRepository.findByUserId(userId);
 
         //than
-        assertEquals(userId, given.getUserId());
-        assertEquals(pw, given.getPassword());
-        assertEquals(name, given.getName());
+        assertEquals(userId, target.getUserId());
+        assertEquals(pw, target.getPassword());
+        assertEquals(name, target.getName());
     }
 }
