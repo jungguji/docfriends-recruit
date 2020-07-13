@@ -1,6 +1,6 @@
 package com.docfriends.junggu.task.domain.generaluser;
 
-import com.docfriends.junggu.task.domain.generaluser.GeneralUser;
+import com.docfriends.junggu.task.domain.user.general.GeneralUser;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
