@@ -1,5 +1,6 @@
-package com.docfriends.junggu.task.domain.doctor;
+package com.docfriends.junggu.task.domain.user.general;
 
+import com.docfriends.junggu.task.domain.user.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,21 +13,20 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class DoctorRepositoryTest {
+class GeneralUserRepositoryTest {
 
     @Autowired
-    DoctorRepository doctorRepository;
+    GeneralUserRepository generalUserRepository;
 
     @Test
     void findByUserId() {
         //given
-
         String userId = "user_id 1";
         String pw = "password 1";
-        String name = "의사 1";
+        String name = "일반유저 1";
 
         //when
-        Doctor given = doctorRepository.findByUserId(userId);
+        User given = generalUserRepository.findByUserId(userId);
 
         //than
         assertEquals(userId, given.getUserId());

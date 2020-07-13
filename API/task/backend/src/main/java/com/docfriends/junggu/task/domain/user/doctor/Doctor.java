@@ -1,7 +1,8 @@
-package com.docfriends.junggu.task.domain.doctor;
+package com.docfriends.junggu.task.domain.user.doctor;
 
 import com.docfriends.junggu.task.domain.answer.Answer;
 import com.docfriends.junggu.task.domain.hospital.Hospital;
+import com.docfriends.junggu.task.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Doctor {
+public class Doctor implements User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
