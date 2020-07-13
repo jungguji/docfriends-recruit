@@ -30,4 +30,26 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+.layout {
+  background-color:wheat;
+}
+.content {
+  text-align: left;
+  background-color: white;
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+
+.gray-font {
+  color: gray;
+}
+
+.consult-content {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
 </style>
