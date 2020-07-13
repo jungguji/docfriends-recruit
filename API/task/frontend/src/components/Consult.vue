@@ -1,16 +1,30 @@
 <template>
-  <div>
-    <div class="question">
-      {{consult.title}}
-      {{consult.content}}
-      {{consult.tag}}
-      {{consult.createDate}}
+  <div class="layout">
+    <div class="content">
+      <div class="title">
+        <h2> {{consult.title}} </h2>
+        <span class="gray-font"> {{consult.tag}} </span> <br />
+        <span class="gray-font"> 상담일자: {{consult.createDate}} </span>
+      </div>
+      <div class="consult-content">
+        {{consult.content}}
+      </div>
     </div>
-    <div class="answer" v-for="(answer, id) in consult.answers" :key="id">
-      {{answer.answerContent}}
-      {{answer.doctorName}}
-      {{answer.hospitalName}}
-      {{answer.hospitalAddress}}
+    <div class="content" v-for="(answer, id) in consult.answers" :key="id">
+      <div class="title">
+        <h2> {{answer.doctorName}}원장님의 답변 </h2>
+        <span class="gray-font"> 답변일자: {{answer.answerCreateDate}} </span>
+      </div>
+      <div class="consult-content">
+         {{answer.answerContent}}
+      </div>
+     
+      <div class="content-floor">
+        <b> {{answer.hospitalName}} </b> <br />
+        <span class="gray-font"> {{answer.hospitalAddress}} </span>
+      </div>
+      
+      
     </div>
   </div>
 </template>

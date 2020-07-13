@@ -1,6 +1,5 @@
 <template>
   <div class="main">
-    Detail.vue
     <img alt="Vue logo" src="../assets/logo.png" />
     <ConsultDetail/>
   </div>
