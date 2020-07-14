@@ -6,6 +6,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
@@ -27,7 +28,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         filter.setForceEncoding(true);
         http.addFilterBefore(filter, CsrfFilter.class);
 
-        http.authorizeRequests()
+        http
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+            .httpBasic()
+        .and()
+            .authorizeRequests()
                 .antMatchers("/main").permitAll()
                 .antMatchers("/detail/**").permitAll()
                 .antMatchers("/**").permitAll()
