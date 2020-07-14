@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    Login 페이지
     <LoginComponect />
   </div>
 </template>

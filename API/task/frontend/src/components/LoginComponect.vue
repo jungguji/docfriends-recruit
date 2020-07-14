@@ -5,8 +5,8 @@
   </div>
   <div class="unprotected" v-else>
     <form @submit.prevent="callLogin()">
-      <input type="text" placeholder="username" v-model="user">
-      <input type="password" placeholder="password" v-model="password">
+        <input type="text" placeholder="이메일 주소를 입력 해주세요." v-model="user" class="input-content"> <br />
+        <input type="password" placeholder="비밀번호를 입력해 주세요." v-model="password" class="input-content"> <br />
       <b-btn variant="success" type="submit">Login</b-btn>
       <p v-if="error" class="error">Bad login information</p>
     </form>
@@ -17,7 +17,7 @@
 import api from "./backend-api";
 
 export default {
-  name: 'MainList',
+  name: 'LoginComp',
   data: function() {
     return {
       loginSuccess: false,
@@ -25,9 +25,24 @@ export default {
     }
   },
   methods: {
-  },
-  mounted () {
-    api.getTest()
+    callLogin() {
+      api.getTest(this.user, this.password).then(response => {
+        console.log("Response: '" + response.data + "' with Statuscode " + response.status)
+        if(response.status == 200) {
+          this.loginSuccess = true
+        }
+      }).catch(error => {
+        console.log("Error: " + error)
+        this.loginError = true
+      })
+    }
   }
 }
 </script>
+
+<style scoped>
+.input-content {
+  width: 35%;
+  margin-bottom: 1rem;
+}
+</style>
