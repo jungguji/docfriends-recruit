@@ -16,7 +16,11 @@ export default {
     getConsult(questionId) {
         return AXIOS.get(`/detail/` + questionId);
     },
-    getTest() {
-        return AXIOS.get(`/login/test`);
+    getTest(id, password) {
+        return AXIOS.post(`/login/test/`, { 
+            auth: {
+                username: id,
+                password: password
+          }});
     }
 }
