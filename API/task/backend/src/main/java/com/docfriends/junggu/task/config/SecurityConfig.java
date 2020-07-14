@@ -31,6 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(filter, CsrfFilter.class);
 
         http
+            .cors()
+        .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
             .httpBasic()
@@ -45,25 +47,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder noOpPasswordEncoder(){
         return NoOpPasswordEncoder.getInstance();
-    }
-
-    @Bean
-    public WebMvcConfigurer webMvcConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/main")
-                        .allowedOrigins("*")
-                        .allowedMethods(HttpMethod.GET.name())
-                        .allowCredentials(false)
-                        .maxAge(3600);
-                registry.addMapping("/detail/{id}")
-                        .allowedOrigins("*")
-                        .allowedMethods(HttpMethod.GET.name())
-                        .allowCredentials(false)
-                        .maxAge(3600);
-            }
-        };
     }
 
     @Bean
