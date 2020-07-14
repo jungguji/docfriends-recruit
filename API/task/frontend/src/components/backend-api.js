@@ -16,14 +16,7 @@ export default {
     getConsult(questionId) {
         return AXIOS.get(`/detail/` + questionId);
     },
-    createUser(firstName, lastName) {
-        return AXIOS.post(`/user/` + firstName + '/' + lastName);
-    },
-    getSecured(user, password) {
-        return AXIOS.get(`/secured/`,{
-            auth: {
-                username: user,
-                password: password
-            }});
+    getTest() {
+        return AXIOS.get(`/test/`);
     }
 }
