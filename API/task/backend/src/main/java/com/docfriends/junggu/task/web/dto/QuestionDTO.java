@@ -10,6 +10,8 @@ import java.util.List;
 
 @Getter
 public class QuestionDTO {
+    private static final String ESCAPE_NEWLINE = "\\n";
+    private static final String HTML_NEWLINE = "<br />";
 
     @Getter
     @Setter
@@ -38,7 +40,7 @@ public class QuestionDTO {
             Assert.notNull(answers, "answers must not be null");
             Assert.notEmpty(answers, "answers must not be empty");
             this.title = title;
-            this.content = content;
+            this.content = content.replace(ESCAPE_NEWLINE, HTML_NEWLINE);
             this.tag = tag;
             this.createDate = createDate;
             this.answers = answers;
