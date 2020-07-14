@@ -6,8 +6,7 @@
         <span class="gray-font"> {{consult.tag}} </span> <br />
         <span class="gray-font"> 상담일자: {{consult.createDate}} </span>
       </div>
-      <div class="consult-content">
-        {{consult.content}}
+      <div v-html="consult.content" class="consult-content">
       </div>
     </div>
     <div class="content" v-for="(answer, id) in consult.answers" :key="id">
@@ -15,8 +14,7 @@
         <h2> {{answer.doctorName}}원장님의 답변 </h2>
         <span class="gray-font"> 답변일자: {{answer.answerCreateDate}} </span>
       </div>
-      <div class="consult-content">
-         {{answer.answerContent}}
+      <div v-html="answer.answerContent" class="consult-content">
       </div>
      
       <div class="content-floor">
