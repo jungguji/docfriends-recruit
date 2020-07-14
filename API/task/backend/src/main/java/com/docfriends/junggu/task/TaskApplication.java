@@ -13,7 +13,8 @@ import java.nio.charset.Charset;
 
 @SpringBootApplication
 @PropertySources(
-		@PropertySource(value = "classpath:application-db.properties", ignoreResourceNotFound = true)
+		@PropertySource(value = {"classpath:application-db.properties"
+				, " application-oauth.properties"}, ignoreResourceNotFound = true)
 )
 public class TaskApplication {
 
