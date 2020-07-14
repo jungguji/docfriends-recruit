@@ -17,6 +17,6 @@ export default {
         return AXIOS.get(`/detail/` + questionId);
     },
     getTest() {
-        return AXIOS.get(`/test/`);
+        return AXIOS.get(`/login/test`);
     }
 }
