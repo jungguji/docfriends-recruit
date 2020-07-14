@@ -15,14 +15,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-@RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-    private final LoginService loginService;
 
     @Override
     public void configure(WebSecurity web) {
@@ -39,26 +37,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .cors()
         .and()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
-            .httpBasic()
-        .and()
             .authorizeRequests()
                 .antMatchers("/main").permitAll()
-                .antMatchers("/detail/**").permitAll()
-                .antMatchers("/**").permitAll()
-                .and();
+                .antMatchers("/detail/**").authenticated()
+                .anyRequest().permitAll()
+                .and()
+            .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/")
+                .permitAll()
+                .and()
+            .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .permitAll();
     }
 
     @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(loginService);
+    public AuthenticationProvider customAuthenticationProvider() {
+        return new CustomAuthenticationProvider();
     }
 
     @Bean
