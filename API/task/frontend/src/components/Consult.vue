@@ -21,8 +21,6 @@
         <b> {{answer.hospitalName}} </b> <br />
         <span class="gray-font"> {{answer.hospitalAddress}} </span>
       </div>
-      
-      
     </div>
   </div>
 </template>

@@ -17,7 +17,7 @@ export default {
         return AXIOS.get(`/detail/` + questionId);
     },
     getTest(id, password) {
-        return AXIOS.post(`/login/test/`, { 
+        return AXIOS.post(`/login/vue`, { 
             auth: {
                 username: id,
                 password: password

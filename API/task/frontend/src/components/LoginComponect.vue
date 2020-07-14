@@ -21,6 +21,9 @@ export default {
   data: function() {
     return {
       loginSuccess: false,
+      loginError: false,
+      user: '',
+      password: '',
       error: false
     }
   },
