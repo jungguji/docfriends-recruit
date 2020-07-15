@@ -21,7 +21,7 @@ class LoginControllerTest {
 
     @Test
     void login() throws Exception {
-        MvcResult result = this.mockMvc.perform(get("/")
+        MvcResult result = this.mockMvc.perform(get("/login")
         ).andDo(print())
                 .andExpect(status().isOk())
                 .andReturn();
