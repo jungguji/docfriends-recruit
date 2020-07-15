@@ -7,9 +7,8 @@
         <h2> {{question.title}} </h2>
         <span class="gray-font"> {{question.tag}} </span> <br />
     </div>
-     <div class="consult-content">
-        <span> {{question.content}} </span> <br />
-      </div>
+     <div v-html="question.content" class="consult-content" >
+     </div>
       <div class="content-floor">
         <span style="color: green"> 답변 {{question.answerCount}} </span> <span class="gray-font" style="float: right; padding-right: 1rem;"> {{question.createDate}} </span>
       </div>
@@ -24,7 +23,7 @@ export default {
   name: 'MainList',
   data: function() {
     return {
-      pageTitle: 'Doctalk',
+      pageTitle: '질문 리스트',
       questionList: [],
       errors: []
     }

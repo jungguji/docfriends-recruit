@@ -14,8 +14,6 @@ public class QuestionDTO {
     private static final String HTML_NEWLINE = "<br />";
 
     @Getter
-    @Setter
-    @AllArgsConstructor
     public static class MainView {
         private final Integer id;
         private final String title;
@@ -23,6 +21,16 @@ public class QuestionDTO {
         private String tag;
         private final LocalDate createDate;
         private final Long answerCount;
+
+        @Builder
+        public MainView(Integer id, String title, String content, String tag, LocalDate createDate, Long answerCount) {
+            this.id = id;
+            this.title = title;
+            this.content = content.replace(ESCAPE_NEWLINE, HTML_NEWLINE);
+            this.tag = tag;
+            this.createDate = createDate;
+            this.answerCount = answerCount;
+        }
     }
 
     @Getter
