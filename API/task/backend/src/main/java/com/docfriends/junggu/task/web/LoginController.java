@@ -10,6 +10,12 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "thymeleaf/login";
+    }
+
+    @GetMapping("/login/vue")
+    @ResponseBody
+    public String loginVue() {
+        return "success";
     }
 }
