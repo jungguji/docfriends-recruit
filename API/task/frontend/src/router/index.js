@@ -8,7 +8,7 @@ const routes = [
     path: "/login",
     name: "Login",
     component: () =>
-      window.location = "http://localhost:8080/login"
+      window.location = "http://localhost:9000/login"
   },
   {
     path: "/",
@@ -26,7 +26,7 @@ const routes = [
     path: "/logout",
     name: "Logout",
     component: () =>
-      window.location = "http://localhost:8080/logout"
+      window.location = "http://localhost:9000/logout"
   },
   
 ];
