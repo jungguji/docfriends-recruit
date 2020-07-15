@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <div id="nav">
+      <img alt="DocFriends" src="@/assets/docLogo.png" />
+      <br />
+
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> | 
-      <router-link to="/main">Main</router-link> | 
-      <router-link to="/login">Login</router-link>
+      <router-link to="/login">Login</router-link> |
+      <router-link to="/logout">Logout</router-link>
+      
     </div>
     <router-view />
   </div>
@@ -32,12 +35,11 @@
   color: #42b983;
 }
 
-.layout {
-  background-color:wheat;
-}
+
 .content {
   text-align: left;
-  background-color: white;
+  border: 1px solid;
+  box-shadow: 3px 3px;
   width: 35%;
   margin-left: auto;
   margin-right: auto;
