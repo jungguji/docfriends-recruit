@@ -4,12 +4,19 @@ import com.docfriends.junggu.task.domain.question.Question;
 import com.docfriends.junggu.task.domain.user.doctor.Doctor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Getter
-@Builder
+@NoArgsConstructor
 @Entity
 @Table(name = "answer")
 public class Answer {
@@ -28,4 +35,14 @@ public class Answer {
     @ManyToOne
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
+
+    @Builder
+    public Answer (String content, String tag, LocalDateTime createDate, Question question, Doctor doctor) {
+        this.content = content;
+        this.tag = tag;
+        this.createDate = createDate;
+        this.question = question;
+        this.doctor = doctor;
+    }
+
 }
