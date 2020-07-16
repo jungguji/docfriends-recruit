@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.docfriends.junggu</groupId>
 	<artifactId>task</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>task</name>
 	<description>docfriends task</description>
 
