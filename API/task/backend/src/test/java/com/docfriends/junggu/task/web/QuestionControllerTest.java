@@ -1,5 +1,6 @@
 package com.docfriends.junggu.task.web;
 
+import com.docfriends.junggu.task.service.LoginService;
 import com.docfriends.junggu.task.web.dto.AnswerDTO;
 import com.docfriends.junggu.task.web.dto.QuestionDTO;
 import com.docfriends.junggu.task.web.dto.QuestionDTO.MainView;
@@ -33,6 +34,9 @@ class QuestionControllerTest {
 
     @MockBean
     private QuestionService questionService;
+
+    @MockBean
+    LoginService loginService;
 
     @Test
     void home() throws Exception {
@@ -72,7 +76,7 @@ class QuestionControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
 
-        String expected = "[{\"title\":\"질문글 제목 01\",\"content\":\"질문내용 01\",\"tag\":\"tag 01\",\"createDate\":\"2020-07-11\",\"answerCount\":2},{\"title\":\"질문글 제목 03\",\"content\":\"질문내용 03\",\"tag\":\"tag 03\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"title\":\"질문글 제목 04\",\"content\":\"질문내용 04\",\"tag\":\"tag 04\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"title\":\"질문글 제목 05\",\"content\":\"질문내용 05\",\"tag\":\"tag 05\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"title\":\"질문글 제목 06\",\"content\":\"질문내용 06\",\"tag\":\"tag 06\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"title\":\"질문글 제목 07\",\"content\":\"질문내용 07\",\"tag\":\"tag 07\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"title\":\"질문글 제목 08\",\"content\":\"질문내용 08\",\"tag\":\"tag 08\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"title\":\"질문글 제목 09\",\"content\":\"질문내용 09\",\"tag\":\"tag 09\",\"createDate\":\"2020-07-11\",\"answerCount\":1}]";
+        String expected = "[{\"id\":1,\"title\":\"질문글 제목 01\",\"content\":\"질문내용 01\",\"tag\":\"tag 01\",\"createDate\":\"2020-07-11\",\"answerCount\":2},{\"id\":3,\"title\":\"질문글 제목 03\",\"content\":\"질문내용 03\",\"tag\":\"tag 03\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"id\":4,\"title\":\"질문글 제목 04\",\"content\":\"질문내용 04\",\"tag\":\"tag 04\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"id\":5,\"title\":\"질문글 제목 05\",\"content\":\"질문내용 05\",\"tag\":\"tag 05\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"id\":6,\"title\":\"질문글 제목 06\",\"content\":\"질문내용 06\",\"tag\":\"tag 06\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"id\":7,\"title\":\"질문글 제목 07\",\"content\":\"질문내용 07\",\"tag\":\"tag 07\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"id\":8,\"title\":\"질문글 제목 08\",\"content\":\"질문내용 08\",\"tag\":\"tag 08\",\"createDate\":\"2020-07-11\",\"answerCount\":1},{\"id\":9,\"title\":\"질문글 제목 09\",\"content\":\"질문내용 09\",\"tag\":\"tag 09\",\"createDate\":\"2020-07-11\",\"answerCount\":1}]";
         assertEquals(expected, result.getResponse().getContentAsString());
     }
 
