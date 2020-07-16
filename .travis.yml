@@ -15,4 +15,5 @@ before_install:
   - cd API/task
   - chmod +x mvnw
 
-script: "./mvnw package"
+install: true
+script: ./mvnw clean install
