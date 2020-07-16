@@ -14,3 +14,6 @@ cache:
 before_install:
   - cd API/task
   - chmod +x mvnw
+
+install: true
+script: ./mvnw clean install
