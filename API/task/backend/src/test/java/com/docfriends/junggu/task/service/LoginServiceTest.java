@@ -36,8 +36,8 @@ class LoginServiceTest {
     @Test
     void loadUserByUsername_일반유저() {
         //given
-        String userId = "일반유저";
-        String pw = "일반비밀번호";
+        String userId = "test@naver.com";
+        String pw ="qwe123";
         String name = "지중구";
 
         GeneralUser givenUser = GeneralUser.builder()
