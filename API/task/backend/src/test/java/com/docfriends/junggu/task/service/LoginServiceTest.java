@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(SpringExtension.class)
+@TestPropertySource("classpath:application-test.properties")
 class LoginServiceTest {
 
     @MockBean
@@ -34,9 +36,9 @@ class LoginServiceTest {
     @Test
     void loadUserByUsername_일반유저() {
         //given
-        String userId = "user_id 1";
-        String pw = "password 1";
-        String name = "일반유저 1";
+        String userId = "일반유저";
+        String pw = "일반비밀번호";
+        String name = "지중구";
 
         GeneralUser givenUser = GeneralUser.builder()
                 .userId(userId)
@@ -44,6 +46,7 @@ class LoginServiceTest {
                 .name(name)
                 .build();
 
+        this.generalUserRepository.save(givenUser);
         given(this.generalUserRepository.findByUserId(userId)).willReturn(givenUser);
 
         //when
@@ -58,15 +61,17 @@ class LoginServiceTest {
     @Test
     void loadUserByUsername_의사() {
         //given
-        String userId = "user_id 1";
-        String pw = "password 1";
-        String name = "의사 1";
+        String userId = "의사입니다";
+        String pw = "의사비밀번호";
+        String name = "진짜의사";
 
         Doctor doctor = Doctor.builder()
                 .userId(userId)
                 .password(pw)
                 .name(name)
                 .build();
+
+        this.doctorRepository.save(doctor);
 
         given(this.generalUserRepository.findByUserId("의사라서없음")).willReturn(null);
         given(this.doctorRepository.findByUserId(userId)).willReturn(doctor);
