@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - openjdk8
+  - oraclejdk8
 
 branches:
   only:
@@ -14,6 +14,3 @@ cache:
 before_install:
   - cd API/task
   - chmod +x mvnw
-
-script: 
-   - sudo mvn clean package
