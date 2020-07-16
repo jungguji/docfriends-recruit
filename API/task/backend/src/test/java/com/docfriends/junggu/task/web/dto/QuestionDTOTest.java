@@ -23,7 +23,7 @@ class QuestionDTOTest {
         QuestionDTO.MainView dto = new MainView(id, title,	content,	tag,	createDate, answerCount);
 
         //than
-        assertEquals("Asd", dto.getId());
+        assertEquals(id, dto.getId());
         assertEquals(title, dto.getTitle());
         assertEquals(content, dto.getContent());
         assertEquals(tag, dto.getTag());
